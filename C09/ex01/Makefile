@@ -15,10 +15,12 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
+
+$(NAME): $(OBJS) 
 	ar rc $(NAME) $(OBJS)
 
 srcs/%.o : srcs/%.c
-	$(CC) $(CFLAGS) - I includes -c $< -o $@
+	$(CC) $(CFLAGS) -I includes -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -33,4 +35,4 @@ fclean: clean
 re: fclean all
 
 # PHONY tells make these are actions, not files
-.PHONY: clean
+.PHONY: all clean fclean re
