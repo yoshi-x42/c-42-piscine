@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 	ar rc $(NAME) $(OBJS)
 
-srcs/%.o = srcs/%.c
+srcs/%.o : srcs/%.c
 	$(CC) $(CFLAGS) - I includes -c $< -o $@
 
 clean:
